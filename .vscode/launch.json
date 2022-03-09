@@ -12,7 +12,5 @@
 		"processId": "${command:PickProcess}",
 		"restart": true,
 		"protocol": "inspector",
-		// "port": 9229
-		// "outFiles": [ "${workspaceRoot}/build/**/*.js" ]
 	}]
 }

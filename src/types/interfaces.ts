@@ -6,3 +6,9 @@ export interface IServerConfig {
 export interface IConfig {
   server?: IServerConfig;
 }
+
+export interface IErrorWrapperItem {
+  message: string;
+  type: string;
+  path?: string;
+}

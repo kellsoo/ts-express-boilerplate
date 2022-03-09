@@ -1,20 +1,23 @@
 // 3rd party packages
 import { Router } from 'express';
 
-// initialization of router
-const router = Router();
+// Middleware
+import validationMiddleware from '../../../middleware/validation-middleware';
 
 // Endpoint controllers
-import * as getExamplesEndpoint from './get.examples';
-import * as getExampleEndpoint from './get.example';
-import * as postExampleEndpoint from './post.example';
+import * as getExamples from './get.examples';
+import * as getExample from './get.example';
+import * as postExample from './post.example';
 import * as patchExampleEndpoint from './patch.example';
 import * as deleteExampleEndpoint from './delete.example';
 
+// initialization of router
+const router = Router();
+
 export default () => {
-  router.get('/', getExamplesEndpoint.workflow);
-  router.get('/:id', getExampleEndpoint.workflow);
-  router.post('/', postExampleEndpoint.workflow);
+  router.get('/', validationMiddleware(getExamples.schema), getExamples.workflow);
+  router.get('/:id', getExample.workflow);
+  router.post('/', postExample.workflow);
   router.patch('/:id', patchExampleEndpoint.workflow);
   router.delete('/:id', deleteExampleEndpoint.workflow);
 

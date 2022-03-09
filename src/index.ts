@@ -21,9 +21,12 @@ const serverConfig: IServerConfig = config.get('server');
 // create http server
 const httpServer = http.createServer(app);
 
+// Environment variables
+const { NODE_ENV } = process.env;
+
 httpServer.listen(serverConfig.port, serverConfig.host, () => {
-  const msg = `Server started at ${serverConfig.host}:${serverConfig.port}`
-    .yellow.inverse;
+  let msg = `Server started at ${serverConfig.host}:${serverConfig.port}\n`.yellow.inverse;
+  msg += `NODE_ENV: ${NODE_ENV}`.green.inverse;
   console.log(successLastMessage(msg));
 });
 export default httpServer;
