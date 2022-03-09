@@ -10,10 +10,7 @@ import 'colors';
 import { IServerConfig } from './types/interfaces';
 
 // utils
-import {
-  successMessage,
-  successLastMessage,
-} from './utils/console-messages';
+import { successMessage, successLastMessage } from './utils/console-messages';
 
 // Importing express application
 import app from './app';
@@ -27,6 +24,6 @@ const httpServer = http.createServer(app);
 httpServer.listen(serverConfig.port, serverConfig.host, () => {
   const msg = `Server started at ${serverConfig.host}:${serverConfig.port}`
     .yellow.inverse;
-  console.log(successMessage(msg));
+  console.log(successLastMessage(msg));
 });
 export default httpServer;
