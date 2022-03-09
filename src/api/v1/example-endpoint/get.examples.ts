@@ -17,7 +17,7 @@ export const schema = Joi.object({
   params: Joi.object(),
 });
 
-const responseSchema = Joi.object({
+export const responseSchema = Joi.object({
   examples: Joi.array()
     .items(
       Joi.object({
@@ -35,7 +35,6 @@ export const workflow = (req: Request, res: Response, next: NextFunction) => {
   const offset = page * limit - limit;
 
   const filteredData = slice(examplesData, offset, offset + limit);
-  console.log(examplesData);
 
   res.json({ examples: filteredData });
 };
