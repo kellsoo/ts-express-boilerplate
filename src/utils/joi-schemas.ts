@@ -17,6 +17,13 @@ export const successMessageSchema = Joi.object({
     .required(),
 });
 
+export const successMessageArraySchema = Joi.array().items(
+  Joi.object({
+    message: Joi.string().required(),
+    type: Joi.string().valid(MESSAGE_TYPE.SUCCESS).required(),
+  }).required()
+);
+
 export const paginationSchema = Joi.object({
   limit: Joi.number().integer().required(),
   page: Joi.number().integer().required(),
