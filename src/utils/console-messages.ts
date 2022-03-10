@@ -10,7 +10,9 @@ export const successLastMessage = (message: string) => {
 };
 
 export const errorMessage = (err: Error) => {
-  const { message, stack } = err;
+  let { message, stack } = err;
+  message = message || 'undefined';
+  stack = stack || 'undefined';
 
   const coloredMessage = message.red;
   const coloredStack = stack.yellow;

@@ -9,6 +9,8 @@ import 'colors';
 // types
 import { IServerConfig } from './types/interfaces';
 
+import './db/';
+
 // utils
 import { successMessage, successLastMessage } from './utils/console-messages';
 
@@ -27,6 +29,6 @@ const { NODE_ENV } = process.env;
 httpServer.listen(serverConfig.port, serverConfig.host, () => {
   let msg = `Server started at ${serverConfig.host}:${serverConfig.port}\n`.yellow.inverse;
   msg += `NODE_ENV: ${NODE_ENV}`.green.inverse;
-  console.log(successLastMessage(msg));
+  console.log(successMessage(msg));
 });
 export default httpServer;
