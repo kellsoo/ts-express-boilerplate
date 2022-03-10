@@ -20,9 +20,8 @@ export default (sequelize: Sequelize, modelName: string) => {
         unique: true,
       },
       password: {
-        type: STRING(50),
+        type: STRING(),
         allowNull: false,
-        unique: true,
       },
     },
     { sequelize, modelName, timestamps: true }

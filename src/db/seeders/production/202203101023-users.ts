@@ -1,10 +1,13 @@
 // Db models
 import { models } from '../../models';
 
+// Utils
+import { errorMessage } from '../../../utils/console-messages';
+
 const usersData = [
   {
     email: 'systemuser',
-    hash: '12322343456789',
+    password: '12322343456789',
   },
 ];
 
@@ -14,7 +17,8 @@ export async function up() {
     await User.bulkCreate(usersData);
     return Promise.resolve();
   } catch (error) {
-    Promise.reject(error);
+    console.log(errorMessage(error));
+    Promise.reject();
   }
 }
 

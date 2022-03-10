@@ -31,8 +31,14 @@ import { successLastMessage, successMessage, errorMessage } from '../utils/conso
       },
     });
     const prodSeeds = await umzugProdSeeds.up();
+
     if (isEmpty(prodSeeds)) console.log(successLastMessage('No production seeds'.green.inverse));
-    else forEach(prodSeeds, (seed) => console.log(`== ${seed.file}: seeding =======`));
+    else {
+      let msg = '';
+      forEach(prodSeeds, (seed) => (msg += `== ${seed.file}: seeding =======\n`));
+      msg += 'Production seed successfully created'.green.inverse;
+      console.log(successLastMessage(msg));
+    }
   } catch (err) {
     console.log(errorMessage(err));
   }

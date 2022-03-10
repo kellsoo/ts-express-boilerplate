@@ -1,3 +1,7 @@
+// dotenv
+import 'dotenv/config';
+import 'colors';
+
 // 3rd party packages
 import { Options } from 'sequelize';
 
@@ -8,6 +12,7 @@ const defDbOptions = <Options>{
   minifyAliases: true,
   logging: false,
   pool: { max: 4 },
+  dialect: 'postgres',
 };
 
 export const development = {
