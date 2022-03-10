@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14.2 #version of postgress
+    ports: 
+      - "2345:5432" # postgress port for main db
+    environment: 
+      - POSTGRES_USER=kellsoo # usrname
+      - POSTGRES_PASSWORD=123456789* # psswd
+      - POSTGRES_DB=express-db #db name 
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./docker/development/postgres/pgdata:/var/lib/postgresql/data/pgdata # place where are docker files
+  postgres_test:
+    image: postgres:14.2
+    ports:
+      - "12345:5432" # postgress port for test db
+    environment:
+      - POSTGRES_USER=kellsoo
+      - POSTGRES_PASSWORD=123456789*
+      - POSTGRES_DB=express-db-test
+    
