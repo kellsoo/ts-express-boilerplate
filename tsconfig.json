@@ -21,7 +21,6 @@
 		"./config/*",
 		"./src/**/*",
 		"./tests/**/*",
-		"./scripts/**/*",
 	],
 	"exclude": [
 		"node_modules"
