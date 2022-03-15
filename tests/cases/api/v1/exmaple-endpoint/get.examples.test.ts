@@ -3,6 +3,9 @@ import supertest from 'supertest';
 import { expect } from 'chai';
 import { minBy, maxBy } from 'lodash';
 
+// express app
+import app from '../../../../../src/app';
+
 // Response schema
 import { responseSchema } from '../../../../../src/api/v1/example-endpoint/get.examples';
 
@@ -11,7 +14,7 @@ const endpoint = '/examples';
 
 describe(`[GET] ${endpoint}`, () => {
   it('Should response 200 - ids from 1 to 25 id ', async () => {
-    const response = await supertest(require(`${process.cwd()}/src/app`).default).get(endpoint);
+    const response = await supertest(app).get(endpoint);
     const { status, body } = response;
     const { examples } = body;
 
@@ -25,9 +28,7 @@ describe(`[GET] ${endpoint}`, () => {
   });
 
   it('Should response 200 - ids from 26 to 50 ', async () => {
-    const response = await supertest(require(`${process.cwd()}/src/app`).default)
-      .get(endpoint)
-      .query({ page: 2 });
+    const response = await supertest(app).get(endpoint).query({ page: 2 });
     const { status, body } = response;
     const { examples } = body;
 

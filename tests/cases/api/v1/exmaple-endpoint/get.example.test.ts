@@ -3,6 +3,9 @@ import supertest from 'supertest';
 import { expect } from 'chai';
 import { maxBy } from 'lodash';
 
+// express app
+import app from '../../../../../src/app';
+
 // Examples data
 import { examplesData } from '../../../../../src/utils/test-data';
 
@@ -20,9 +23,7 @@ describe(`[GET] ${endpoint(':id')}`, () => {
   });
 
   it('Should response 400 - id must be number', async () => {
-    const response = await supertest(require(`${process.cwd()}/src/app`).default).get(
-      endpoint('aaa')
-    );
+    const response = await supertest(app).get(endpoint('aaa'));
     const { status, body } = response;
     expect(body).to.deep.equal({
       messages: [
@@ -37,9 +38,7 @@ describe(`[GET] ${endpoint(':id')}`, () => {
   });
 
   it('Should response 404 - example does not exist', async () => {
-    const response = await supertest(require(`${process.cwd()}/src/app`).default).get(
-      endpoint(noFoundExampleId)
-    );
+    const response = await supertest(app).get(endpoint(noFoundExampleId));
     const { status, body } = response;
     expect(body).to.deep.equal({
       messages: [
@@ -53,7 +52,7 @@ describe(`[GET] ${endpoint(':id')}`, () => {
   });
 
   it('Should response 200', async () => {
-    const response = await supertest(require(`${process.cwd()}/src/app`).default).get(endpoint(1));
+    const response = await supertest(app).get(endpoint(1));
     const { status, body } = response;
 
     expect(status).to.eq(200);

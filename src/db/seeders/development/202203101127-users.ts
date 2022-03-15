@@ -12,7 +12,7 @@ const password = hashSync('Ab12345*', salt);
 
 const userData: any[] = [];
 
-for (let index = 0; index < 100; index++) {
+for (let index = 0; index < 5; index++) {
   userData.push({
     email: faker.internet.email(),
     password,

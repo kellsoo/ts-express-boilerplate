@@ -4,6 +4,7 @@ package-lock.json
 
 # test
 /.nyc_output
+/coverage
 
 # env
 .env

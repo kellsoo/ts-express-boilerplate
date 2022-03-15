@@ -3,6 +3,9 @@ import supertest from 'supertest';
 import { expect } from 'chai';
 import { maxBy } from 'lodash';
 
+// express app
+import app from '../../../../../src/app';
+
 // Examples data
 import { examplesData } from '../../../../../src/utils/test-data';
 
@@ -20,9 +23,7 @@ describe(`[DELETE] ${endpoint(':id')}`, () => {
   });
 
   it('Should response 400 - id must be number', async () => {
-    const response = await supertest(require(`${process.cwd()}/src/app`).default).delete(
-      endpoint('aaa')
-    );
+    const response = await supertest(app).delete(endpoint('aaa'));
     const { status, body } = response;
     expect(body).to.deep.equal({
       messages: [
@@ -37,9 +38,7 @@ describe(`[DELETE] ${endpoint(':id')}`, () => {
   });
 
   it('Should response 404 - example does not exist', async () => {
-    const response = await supertest(require(`${process.cwd()}/src/app`).default).delete(
-      endpoint(noFoundExampleId)
-    );
+    const response = await supertest(app).delete(endpoint(noFoundExampleId));
     const { status, body } = response;
     expect(body).to.deep.equal({
       messages: [
@@ -53,9 +52,7 @@ describe(`[DELETE] ${endpoint(':id')}`, () => {
   });
 
   it('Should response 200', async () => {
-    const response = await supertest(require(`${process.cwd()}/src/app`).default).delete(
-      endpoint(100)
-    );
+    const response = await supertest(app).delete(endpoint(100));
     const { status, body } = response;
     expect(status).to.eq(200);
 
