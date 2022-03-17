@@ -4,6 +4,9 @@ import { Router } from 'express';
 // middleware
 import validationMiddleware from '../../../middleware/validation-middleware';
 
+// passport middleware
+import { localVerificationMiddleware } from '../../../passport/local-verify';
+
 // initialization of router
 const router = Router();
 
@@ -11,6 +14,6 @@ const router = Router();
 import * as postLogin from './post.login';
 
 export default () => {
-  router.post('/login', validationMiddleware(postLogin.schema), postLogin.workflow);
+  router.post('/login', validationMiddleware(postLogin.schema), localVerificationMiddleware, postLogin.workflow);
   return router;
 };

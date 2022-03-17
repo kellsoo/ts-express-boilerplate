@@ -2,12 +2,13 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
 
 // Sequelize types
-const { BIGINT, STRING } = DataTypes;
+const { BIGINT, STRING, DATE } = DataTypes;
 
 export class UserModel extends Model {
   id: number;
   email: string;
-  hash: string;
+  password: string;
+  lastLoginAt: string;
 }
 
 export default (sequelize: Sequelize, modelName: string) => {
@@ -20,9 +21,9 @@ export default (sequelize: Sequelize, modelName: string) => {
         unique: true,
       },
       password: {
-        type: STRING(),
-        allowNull: false,
+        type: STRING,
       },
+      lastLoginAt: { type: DATE },
     },
     { sequelize, modelName, timestamps: true }
   );

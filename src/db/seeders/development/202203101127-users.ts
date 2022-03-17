@@ -1,5 +1,5 @@
 // 3rd party packages
-import { hashSync, genSaltSync } from 'bcrypt';
+import { hashSync, genSaltSync } from 'bcryptjs';
 import { faker } from '@faker-js/faker';
 
 // Models
@@ -18,6 +18,11 @@ for (let index = 0; index < 5; index++) {
     password,
   });
 }
+
+userData.push({
+  email: 'test@user.sk',
+  password,
+});
 
 export async function up() {
   try {

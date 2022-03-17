@@ -9,7 +9,10 @@ import 'colors';
 // types
 import { IServerConfig } from './types/interfaces';
 
-import './db/';
+import connection from './db/';
+(async () => {
+  await connection();
+})();
 
 // utils
 import { successMessage, successLastMessage } from './utils/console-messages';

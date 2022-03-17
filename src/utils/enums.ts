@@ -8,3 +8,9 @@ export enum ENV {
   test = 'test',
   production = 'production',
 }
+
+export enum JWT_AUDIENCE {
+  API = 'jwt-api',
+  FORGOTTEN_PASSWORD = 'jwt-forgotten-password',
+  INVITATION = 'invitation',
+}

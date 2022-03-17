@@ -3,11 +3,11 @@ import { models } from '../../models';
 
 // Utils
 import { errorMessage } from '../../../utils/console-messages';
+import { SYSTEM_USER } from '../../../utils/global-variables';
 
 const usersData = [
   {
-    email: 'systemuser',
-    password: '12322343456789',
+    email: SYSTEM_USER,
   },
 ];
 
