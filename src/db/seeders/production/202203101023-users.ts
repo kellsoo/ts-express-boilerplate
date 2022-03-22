@@ -8,6 +8,7 @@ import { SYSTEM_USER } from '../../../utils/global-variables';
 const usersData = [
   {
     email: SYSTEM_USER,
+    createdBy: 1,
   },
 ];
 

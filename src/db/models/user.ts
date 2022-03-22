@@ -9,6 +9,20 @@ export class UserModel extends Model {
   email: string;
   password: string;
   lastLoginAt: string;
+  confirmedAt: string;
+
+  // foreign keys
+  createdBy: number;
+  creator: UserModel;
+  updatedBy: number;
+  editor: UserModel;
+  deletedBy: number;
+  destructor: UserModel;
+
+  // metadata
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string;
 }
 
 export default (sequelize: Sequelize, modelName: string) => {
@@ -23,10 +37,16 @@ export default (sequelize: Sequelize, modelName: string) => {
       password: {
         type: STRING,
       },
-      lastLoginAt: { type: DATE },
+      lastLoginAt: DATE,
+      confirmedAt: DATE,
     },
-    { sequelize, modelName, timestamps: true }
+    { sequelize, modelName, timestamps: true, paranoid: true }
   );
 
+  UserModel.associate = (models) => {
+    UserModel.belongsTo(models.User, { as: 'creator', foreignKey: 'createdBy' });
+    UserModel.belongsTo(models.User, { as: 'editor', foreignKey: 'updatedBy' });
+    UserModel.belongsTo(models.User, { as: 'destructor', foreignKey: 'deletedBy' });
+  };
   return UserModel;
 };

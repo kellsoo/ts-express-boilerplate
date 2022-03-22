@@ -3,16 +3,19 @@ import config from 'config';
 import express from 'express';
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
+import { Strategy as JwtStrategy } from 'passport-jwt';
 
 // types
 import { IPassportConfig } from './types/interfaces';
 
 // Passport settings
 import localVerify from './passport/local-verify';
+import { jwtVerifyUserApi } from './passport/jwt-verify';
 
 const passportConfig: IPassportConfig = config.get('passport');
 
 passport.use('local', new LocalStrategy(passportConfig.local, localVerify));
+passport.use('jwt-api', new JwtStrategy({ ...passportConfig.jwt.api }, jwtVerifyUserApi));
 
 // serialization of user
 passport.serializeUser((user, done) => done(null, user));

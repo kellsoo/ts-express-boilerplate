@@ -5,8 +5,6 @@ import { faker } from '@faker-js/faker';
 // Models
 import { models } from '../../models';
 
-import { errorMessage } from '../../../utils/console-messages';
-
 const salt = genSaltSync(10);
 const password = hashSync('Ab12345*', salt);
 
@@ -16,12 +14,14 @@ for (let index = 0; index < 5; index++) {
   userData.push({
     email: faker.internet.email(),
     password,
+    createdBy: 1,
   });
 }
 
 userData.push({
   email: 'test@user.sk',
   password,
+  createdBy: 1,
 });
 
 export async function up() {

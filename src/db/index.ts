@@ -39,7 +39,7 @@ export default async (force: boolean = false): Promise<Sequelize> | undefined =>
     if (isEmpty(prodSeeds)) console.log(successLastMessage('No production seeds'.green.inverse));
     else {
       let msg = '';
-      forEach(prodSeeds, (seed) => (msg += `==== ${seed.file}: seeding ====\n`));
+      forEach(prodSeeds, (seed) => (msg += `== ${seed.file}: seeding =======\n`));
       msg += '\nProduction seed successfully created'.green.inverse;
       console.log(successLastMessage(msg));
     }

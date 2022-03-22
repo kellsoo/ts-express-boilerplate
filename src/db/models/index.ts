@@ -1,7 +1,7 @@
 // 3rd party packages
 import { Sequelize } from 'sequelize';
 import pg from 'pg';
-import {} from 'lodash';
+import { forEach } from 'lodash';
 
 // True because otherwise BIGINT return string instead of integer https://github.com/sequelize/sequelize/issues/1774
 pg.defaults.parseInt8 = true;
@@ -27,7 +27,7 @@ const sequelize = new Sequelize(url, options);
 sequelize
   .authenticate()
   .then(() => {
-    console.log(successMessage('Db connection established...'.yellow.inverse));
+    console.log('Db connection established...'.green);
   })
   .catch((err) => {
     console.log(errorMessage(err));
@@ -35,6 +35,9 @@ sequelize
 
 const buildModels = () => {
   const models = modelsBuilder(sequelize);
+  forEach(models, (model) => {
+    if (model.associate) model.associate(models);
+  });
   return models;
 };
 
