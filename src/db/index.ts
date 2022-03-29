@@ -45,6 +45,8 @@ export default async (force: boolean = false): Promise<Sequelize> | undefined =>
     }
     return sequelize;
   } catch (err) {
+    console.log(__dirname);
+
     console.log(errorMessage(err));
   }
 };

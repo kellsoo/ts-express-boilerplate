@@ -6,9 +6,11 @@
   "scripts": {
     "test": "NODE_ENV=test ts-mocha --config \".mocharc.js\"",
     "test:coverage": "NODE_ENV=test nyc ts-mocha --config \".mocharc.js\"",
-    "dev": "NODE_ENV=development nodemon src/index",
     "seed:dev": "./node_modules/.bin/sequelize db:seed:all",
+    "dev": "NODE_ENV=development nodemon src/index",
     "debug": "npm run dev -- --inspect",
+    "drop:dev": "NODE_ENV=development ts-node src/db/drop-db",
+    "drop:dev:seed": "NODE_ENV=development ts-node src/db/drop-db seed",
     "generate-jwt-secret": "ts-node src/utils/generate-jwt-secret"
   },
   "repository": {

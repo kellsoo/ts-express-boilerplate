@@ -15,7 +15,10 @@ import { jwtVerifyUserApi } from './passport/jwt-verify';
 const passportConfig: IPassportConfig = config.get('passport');
 
 passport.use('local', new LocalStrategy(passportConfig.local, localVerify));
-passport.use('jwt-api', new JwtStrategy({ ...passportConfig.jwt.api }, jwtVerifyUserApi));
+passport.use(
+  'jwt-api',
+  new JwtStrategy({ ...passportConfig.jwt.api, secretOrKey: passportConfig.jwt.secretOrKey }, jwtVerifyUserApi)
+);
 
 // serialization of user
 passport.serializeUser((user, done) => done(null, user));

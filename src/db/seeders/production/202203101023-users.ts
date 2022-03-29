@@ -1,3 +1,6 @@
+// 3rd party packages
+import { Sequelize, QueryInterface } from 'sequelize';
+
 // Db models
 import { models } from '../../models';
 
@@ -16,11 +19,18 @@ export async function up() {
   try {
     const { User } = models;
     await User.bulkCreate(usersData);
-    return Promise.resolve();
-  } catch (error) {
-    console.log(errorMessage(error));
+  } catch (err) {
+    console.log(errorMessage(err));
     Promise.reject();
   }
 }
 
-export async function down() {}
+export async function down(queryInterface: QueryInterface) {
+  try {
+    await queryInterface.dropTable('users', { cascade: true });
+    return Promise.resolve();
+  } catch (err) {
+    console.log(errorMessage(err));
+    return Promise.reject();
+  }
+}

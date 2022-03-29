@@ -14,3 +14,21 @@ export enum JWT_AUDIENCE {
   FORGOTTEN_PASSWORD = 'jwt-forgotten-password',
   INVITATION = 'invitation',
 }
+
+export enum ROLES {
+  ADMIN = 'Administrator',
+  USER = 'User',
+}
+
+export enum PERMISSION {
+  EXAMPLE_READ = 'EXAMPLE_READ',
+  EXAMPLE_WRITE = 'EXAMPLE_WRITE',
+}
+
+export const PERMISSIONS = Object.values(PERMISSION);
+
+export enum PERMISSION_GROUP {
+  EXAMPLE = 'EXAMPLE',
+}
+
+export const PERMISSION_GROUPS = Object.values(PERMISSION_GROUP);
