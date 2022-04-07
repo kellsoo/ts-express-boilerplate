@@ -25,7 +25,7 @@ export default <IConfig>{
       api: {
         audience: JWT_AUDIENCE.API,
         exp: '2h',
-        jwtFromRequest: ExtractJwt.fromExtractors([ExtractJwt.fromAuthHeaderAsBearerToken()]),
+        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
         passReqToCallback: true,
       },
     },

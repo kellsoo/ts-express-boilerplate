@@ -28,6 +28,12 @@ userData.push({
   createdBy: 1,
 });
 
+userData.push({
+  email: 'test@admin.sk',
+  password,
+  createdBy: 1,
+});
+
 export async function up() {
   try {
     const { User } = models;

@@ -12,7 +12,8 @@ export async function up() {
   try {
     const { Role } = models;
     const roles = [];
-    for (const role in ROLES) {
+
+    for (const role of ROLES) {
       roles.push({ role: role, createdBy: 1 });
     }
     await Role.bulkCreate(roles);

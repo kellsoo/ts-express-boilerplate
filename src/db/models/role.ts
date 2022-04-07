@@ -28,6 +28,20 @@ export default (sequelize: Sequelize, modelName: string) => {
         autoIncrement: true,
       },
       role: { type: STRING, unique: true },
+
+      // foreign keys
+      createdBy: {
+        type: BIGINT,
+        allowNull: false,
+      },
+      updatedBy: {
+        type: BIGINT,
+        allowNull: true,
+      },
+      deletedBy: {
+        type: BIGINT,
+        allowNull: true,
+      },
     },
     { sequelize, modelName, timestamps: true, paranoid: true }
   );
@@ -41,6 +55,14 @@ export default (sequelize: Sequelize, modelName: string) => {
       foreignKey: 'roleId',
       through: {
         model: models.RolePermission,
+        unique: true,
+      },
+    });
+
+    RoleModel.belongsToMany(models.User, {
+      foreignKey: 'roleId',
+      through: {
+        model: models.UserRole,
         unique: true,
       },
     });

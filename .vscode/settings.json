@@ -1,4 +1,5 @@
 {
-    "ltex.language": "en-US",
-    "languageTool.language": "en-US",
+  "ltex.language": "en-US",
+  "languageTool.language": "en-US",
+  "liveServer.settings.port": 5501
 }

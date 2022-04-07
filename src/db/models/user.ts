@@ -39,6 +39,20 @@ export default (sequelize: Sequelize, modelName: string) => {
       },
       lastLoginAt: DATE,
       confirmedAt: DATE,
+
+      // foreign keys
+      createdBy: {
+        type: DataTypes.BIGINT,
+        allowNull: false,
+      },
+      updatedBy: {
+        type: DataTypes.BIGINT,
+        allowNull: true,
+      },
+      deletedBy: {
+        type: DataTypes.BIGINT,
+        allowNull: true,
+      },
     },
     { sequelize, modelName, timestamps: true, paranoid: true }
   );
@@ -47,6 +61,14 @@ export default (sequelize: Sequelize, modelName: string) => {
     UserModel.belongsTo(models.User, { as: 'creator', foreignKey: 'createdBy' });
     UserModel.belongsTo(models.User, { as: 'editor', foreignKey: 'updatedBy' });
     UserModel.belongsTo(models.User, { as: 'destructor', foreignKey: 'deletedBy' });
+
+    UserModel.belongsToMany(models.Role, {
+      foreignKey: 'userId',
+      through: {
+        model: models.UserRole,
+        unique: true,
+      },
+    });
   };
   return UserModel;
 };

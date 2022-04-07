@@ -14,7 +14,7 @@ import { errorMessage } from '../utils/console-messages';
 
 export default (err: ErrorWrapper, req: Request, res: Response, next: NextFunction) => {
   if (NODE_ENV === ENV.development) {
-    console.log(errorMessage(err));
+    // console.log(errorMessage(err));
   }
 
   const statusCode = err.statusCode || 500;

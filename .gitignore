@@ -14,4 +14,7 @@ docker/
 
 # vscode
 .vscdoe
-!/.vscode/launch.json
+!/.vscode/launch.json\
+
+# api doc
+/apidoc

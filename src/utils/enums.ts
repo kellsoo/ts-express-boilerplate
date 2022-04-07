@@ -15,10 +15,12 @@ export enum JWT_AUDIENCE {
   INVITATION = 'invitation',
 }
 
-export enum ROLES {
+export enum ROLE {
   ADMIN = 'Administrator',
   USER = 'User',
 }
+
+export const ROLES = Object.values(ROLE);
 
 export enum PERMISSION {
   EXAMPLE_READ = 'EXAMPLE_READ',
