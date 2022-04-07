@@ -12,6 +12,10 @@ before first run of app its necessary create **.env** file where are variables:
 | POSTGRES_TEST_URL    | connect url | test db              |
 | COMPOSE_PROJECT_NAME | Name        | name of docker image |
 
+### TODOs
+
+[todos](./docs/todos.md)
+
 ### Author
 
 Peter Kello peter.kello.sk@gmial.com
